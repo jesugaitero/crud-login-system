@@ -2,11 +2,10 @@ const mongoose = require('mongoose')
 const User = require('../models/User')
 const { errorHandler } = require('../helpers/help')
 const { MONGODB_HOST, MONGODB_DATABASE } = process.env;
-const MONGODB_URI = process.env.DATABASE_LOCAL
-
+const MONGODB_URI = `${MONGODB_HOST}${MONGODB_DATABASE}`
 const connectDB = async () => {
     try {
-
+        mongoose.set('strictQuery', true)
         await mongoose.connect(MONGODB_URI, {
             useUnifiedTopology: true,
             useNewUrlParser: true,
@@ -15,11 +14,11 @@ const connectDB = async () => {
         })
         console.log(`DB CONNECTION SUCCESS`)
         var admin = {
-            username: 'AWSH SUPPORT',
-            email: 'support@awsh.net',
+            username: 'COMPANY_SUPPORT',
+            email: 'support@domain.com',
             password: 'maricoelqueloleaynomeparebolasporguevon',
-            role:'admin'
-        } 
+            role: 'admin'
+        }
         const user = new User(admin);
         user.save((err, user) => {
             if (err) {

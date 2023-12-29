@@ -7,7 +7,7 @@ const { v1: uuidv1 } = require('uuid');
 
 const UsuariosSchema = new Schema({
 
-    username: { type: String, required: true, trim: true},
+    username: { type: String, required: true, trim: true },
     email: { type: String, required: true, unique: true, trim: true },
     hashed_password: { type: String, required: true },
     //about: { type: String, trim: true },
